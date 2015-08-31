@@ -1,0 +1,82 @@
+{
+    "name":"OpenWeatherMap",
+    "id":"org.openweathermap",
+    "description":"The open weather service that keeps you up to date.",
+    "platforms":[
+        {
+            "name":"Android",
+            "minPlatformVersion":"5.0",
+            "minApiVersion":"19",
+            "appURL":"https://play.google.com/store/apps/details?id=org.openweathermap.android",
+            "minAppVersion":"1.0",
+            "contentID":"com.accuweather.android"
+        },
+        {
+            "name":"ios",
+            "minPlatformVersion":"9.0",
+            "appURL":"https://itunes.apple.com/en/app/org/openweathermap/id300048137",
+            "minAppVersion":"1.2",
+            "contentID":"300048137"
+        },
+        {
+            "name":"linux",
+            "appURL":"https://accuweather.com"
+        },
+        {
+            "name":"Web",
+            "appURL":"https://accuweather.com"
+        }
+    ],
+    "auth":{
+        "type":"clientcreds",
+        "credentials":{
+            "key":"833e2f1ded3644f180c6d724fecb5833",
+            "secret":"NA",
+            "endpoint":"NA"
+        }
+    },
+    "capability":[
+        {
+            "id":"org.openweathermap.getweather.cityname",
+            "platform" : "linux",
+            "isauthrequired":"false",
+            "description":"Gets the current weather for a given place.",
+            "endpoint":"api.openweathermap.org/data/2.5/weather?{{q1}}={{p1}}",
+            "endpointtype":"REST",
+            "operation":"GET",
+            "params":{
+                "q":"Seattle"
+            },
+            "response":{
+                "error":"code",
+                "body":"JSON Object."
+            },
+            "tags":[
+                "getweather",
+                "cityname",
+                "rainy"
+            ]
+        },
+        {
+            "id":"org.openweathermap.getweather.cityid",
+            "isauthrequired":"false",
+            "platform" : "linux",
+            "description":"Search for a given location for the past n days.",
+            "endpoint":"api.openweathermap.org/data/2.5/forecast/daily?{{q1}}={{p1}}&{{q2}}={{p2}}",
+            "endpointtype":"REST",
+            "operation":"GET",
+            "params":{
+                "id":"location",
+                "cnt":"1"
+            },
+            "response":{
+                "error":"code",
+                "body":"JSON Object."
+            },
+            "tags":[
+                "getweather",
+                "cityid"
+            ]
+        }
+    ]
+}
